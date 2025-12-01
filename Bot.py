@@ -2,15 +2,11 @@ from openai import OpenAI
 from dotenv import load_dotenv
 import requests
 import os
-import signal
 import sys
 
-def sair(sig, frame):
+def sair():
     print("Encerrando bot...")
     sys.exit(0)
-
-signal.signal(signal.SIGTERM, sair)
-signal.signal(signal.SIGINT, sair)
 
 load_dotenv()
 
@@ -72,9 +68,12 @@ def Send(chatID, aEnviar):
 while True:
     try:
         response = requests.get(f"{FullUrl}getUpdates",params={"offset": offset, "timeout": 1},timeout=1)
+    except KeyboardInterrupt:
+        sair()
+        break
     except:
         continue
-    
+
     data = response.json()
 
     for i in data["result"]:
