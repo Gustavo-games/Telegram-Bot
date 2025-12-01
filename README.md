@@ -1,6 +1,6 @@
 # Telegram Bot with GPT test
 
-A simple Telegram bot that uses chat GPT API to read and send messages.
+A simple Telegram Bot that uses chat GPT's API to read and send messages.
 
 This is just a test so it is very simple, answering to just text and not images.
 More functionalities may be added in the future
